@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		653404911D6150BE0088F185 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653404901D6150BE0088F185 /* main.cpp */; };
+		6534049C1D6150FE0088F185 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6534049A1D6150FE0088F185 /* grid.cpp */; };
+		6534049F1D61518F0088F185 /* gameobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6534049D1D61518F0088F185 /* gameobject.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		6534048D1D6150BE0088F185 /* gridgame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gridgame; sourceTree = BUILT_PRODUCTS_DIR; };
 		653404901D6150BE0088F185 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		6534049A1D6150FE0088F185 /* grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grid.cpp; sourceTree = "<group>"; };
+		6534049B1D6150FE0088F185 /* grid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = grid.hpp; sourceTree = "<group>"; };
+		6534049D1D61518F0088F185 /* gameobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gameobject.cpp; sourceTree = "<group>"; };
+		6534049E1D61518F0088F185 /* gameobject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gameobject.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +63,29 @@
 		6534048F1D6150BE0088F185 /* gridgame */ = {
 			isa = PBXGroup;
 			children = (
+				653404971D6150E00088F185 /* classes */,
 				653404901D6150BE0088F185 /* main.cpp */,
 			);
 			path = gridgame;
+			sourceTree = "<group>";
+		};
+		653404971D6150E00088F185 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				653404981D6150E50088F185 /* game_objects */,
+				6534049A1D6150FE0088F185 /* grid.cpp */,
+				6534049B1D6150FE0088F185 /* grid.hpp */,
+			);
+			name = classes;
+			sourceTree = "<group>";
+		};
+		653404981D6150E50088F185 /* game_objects */ = {
+			isa = PBXGroup;
+			children = (
+				6534049D1D61518F0088F185 /* gameobject.cpp */,
+				6534049E1D61518F0088F185 /* gameobject.hpp */,
+			);
+			name = game_objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6534049F1D61518F0088F185 /* gameobject.cpp in Sources */,
 				653404911D6150BE0088F185 /* main.cpp in Sources */,
+				6534049C1D6150FE0088F185 /* grid.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +267,7 @@
 				653404961D6150BE0088F185 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

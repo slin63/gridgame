@@ -1,10 +1,12 @@
-//
-//  main.cpp
-//  gridgame
-//
-//  Created by SLIN63 on 8/14/16.
-//  Copyright © 2016 SLIN63. All rights reserved.
-//
+// Conceptually like dwarf fortress adventure mode . . .
+// Main goals:
+//  Implement objects effectively and maintanably (sic)
+//  Render objects
+//  Darkness effect (objects out of certain radius are dimmed and color-shifted)
+//      - http://stackoverflow.com/questions/2616906/how-do-i-output-coloured-text-to-a-linux-terminal
+// http://www.cplusplus.com/forum/articles/12974/
+// http://www.cplusplus.com/doc/tutorial/inheritance/
+// http://www.cplusplus.com/forum/general/107753/
 
 #include <iostream>
 
