@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6512E8CF1D62B553003F62BF /* coordinates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6512E8CD1D62B553003F62BF /* coordinates.cpp */; };
+		6512E8D21D62C014003F62BF /* human.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6512E8D01D62C014003F62BF /* human.cpp */; };
+		6512E8D71D62D1FC003F62BF /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6512E8D51D62D1FC003F62BF /* renderer.cpp */; };
 		653404911D6150BE0088F185 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653404901D6150BE0088F185 /* main.cpp */; };
 		6534049C1D6150FE0088F185 /* grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6534049A1D6150FE0088F185 /* grid.cpp */; };
 		6534049F1D61518F0088F185 /* gameobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6534049D1D61518F0088F185 /* gameobject.cpp */; };
@@ -25,6 +28,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6512E8CD1D62B553003F62BF /* coordinates.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coordinates.cpp; sourceTree = "<group>"; };
+		6512E8CE1D62B553003F62BF /* coordinates.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = coordinates.hpp; sourceTree = "<group>"; };
+		6512E8D01D62C014003F62BF /* human.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = human.cpp; sourceTree = "<group>"; };
+		6512E8D11D62C014003F62BF /* human.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = human.hpp; sourceTree = "<group>"; };
+		6512E8D51D62D1FC003F62BF /* renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = renderer.cpp; sourceTree = "<group>"; };
+		6512E8D61D62D1FC003F62BF /* renderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = renderer.hpp; sourceTree = "<group>"; };
 		6534048D1D6150BE0088F185 /* gridgame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gridgame; sourceTree = BUILT_PRODUCTS_DIR; };
 		653404901D6150BE0088F185 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6534049A1D6150FE0088F185 /* grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grid.cpp; sourceTree = "<group>"; };
@@ -44,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6512E8D31D62D1E0003F62BF /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				6512E8D51D62D1FC003F62BF /* renderer.cpp */,
+				6512E8D61D62D1FC003F62BF /* renderer.hpp */,
+			);
+			name = graphics;
+			sourceTree = "<group>";
+		};
 		653404841D6150BE0088F185 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +81,7 @@
 		6534048F1D6150BE0088F185 /* gridgame */ = {
 			isa = PBXGroup;
 			children = (
+				6512E8D31D62D1E0003F62BF /* graphics */,
 				653404971D6150E00088F185 /* classes */,
 				653404901D6150BE0088F185 /* main.cpp */,
 			);
@@ -75,6 +94,8 @@
 				653404981D6150E50088F185 /* game_objects */,
 				6534049A1D6150FE0088F185 /* grid.cpp */,
 				6534049B1D6150FE0088F185 /* grid.hpp */,
+				6512E8CD1D62B553003F62BF /* coordinates.cpp */,
+				6512E8CE1D62B553003F62BF /* coordinates.hpp */,
 			);
 			name = classes;
 			sourceTree = "<group>";
@@ -84,6 +105,8 @@
 			children = (
 				6534049D1D61518F0088F185 /* gameobject.cpp */,
 				6534049E1D61518F0088F185 /* gameobject.hpp */,
+				6512E8D01D62C014003F62BF /* human.cpp */,
+				6512E8D11D62C014003F62BF /* human.hpp */,
 			);
 			name = game_objects;
 			sourceTree = "<group>";
@@ -145,8 +168,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6534049F1D61518F0088F185 /* gameobject.cpp in Sources */,
+				6512E8D21D62C014003F62BF /* human.cpp in Sources */,
 				653404911D6150BE0088F185 /* main.cpp in Sources */,
 				6534049C1D6150FE0088F185 /* grid.cpp in Sources */,
+				6512E8D71D62D1FC003F62BF /* renderer.cpp in Sources */,
+				6512E8CF1D62B553003F62BF /* coordinates.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
