@@ -10,12 +10,12 @@
 #include <vector>
 #include <iostream>
 
-RenderBox::RenderBox(const Grid& grid_n) {
-    grid = grid_n;
+RenderBox::RenderBox(const Manager& mgr_n) {
+    mgr = mgr_n;
 }
 
 void RenderBox::render_grid(void) {
-    std::vector<GameObject*> objs = grid.get_grid();
+    std::vector<GameObject*> objs = mgr.get_objects();
     for (auto &&g_obj : objs)
     {
         g_obj->print();

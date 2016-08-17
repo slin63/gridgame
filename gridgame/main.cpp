@@ -10,22 +10,27 @@
 // http://www.cplusplus.com/forum/general/107753/
 
 #include <iostream>
-#include <iomanip>
 #include "coordinates.hpp"
 #include "human.hpp"
+#include "tree.hpp"
 #include "renderer.hpp"
-#include "grid.hpp"
+#include "manager.hpp"
+#include "player.hpp"
 
 
 int main(int argc, const char * argv[]) {
+    srand(time(NULL));
     Human a(CRDS(2, 3));
     Human b(CRDS(4, 5));
     Human c(CRDS(4, 3));
-    Grid g;
-    g.create(a);
-    g.create(b);
-    g.create(c);
-    
+    a.rand_walk();
+    Tree d(CRDS(6,6));
+    Player player(a);
+
+    Manager g;
+    g.add(a);
+    g.add(d);
+
     RenderBox r_box(g);
     r_box.render_grid();
 }

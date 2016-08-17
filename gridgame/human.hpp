@@ -14,11 +14,12 @@
 
 class Human : public GameObject {
 public:
-    Human() {
+    Human()
+    {
         set_symbol(race_symbol), set_health(race_health), set_color(race_color);
     }
     Human(const CRDS&);
-    
+
 private:
     char race_symbol = '@';
     int race_health = 5;

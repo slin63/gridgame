@@ -10,16 +10,16 @@
 #ifndef renderer_hpp
 #define renderer_hpp
 
-#include "grid.hpp"
+#include "manager.hpp"
 
 class RenderBox {
 public:
     RenderBox() = default;
-    RenderBox(const Grid&);
+    RenderBox(const Manager&);
     void render_grid();
 
 private:
-    Grid grid;
+    Manager mgr;
 };
 
 #endif /* renderer_hpp */
