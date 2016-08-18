@@ -8,9 +8,17 @@
 
 #include "human.hpp"
 
-Human::Human(const CRDS& coords) {
+Human::Human()
+{
+    symbol = race_symbol;
+    health = race_health;
+    color = race_color;
+}
+
+Human::Human(const CRDS& coords)
+{
     c = coords;
-    set_symbol(race_symbol);
-    set_health(race_health);
-    set_color(race_color);
+    symbol = race_symbol;
+    health = race_health;
+    color = race_color;
 }

@@ -14,10 +14,7 @@
 
 class Human : public Creature {
 public:
-    Human()
-    {
-        set_symbol(race_symbol), set_health(race_health), set_color(race_color);
-    }
+    Human();
     Human(const CRDS&);
 
 private:
@@ -27,3 +24,4 @@ private:
 };
 
 #endif /* player_hpp */
+

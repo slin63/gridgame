@@ -14,6 +14,7 @@
 class StaticObject : public GameObject {
 protected:
     bool draw = true;
+    int draw_priority = 5;
 };
 
 

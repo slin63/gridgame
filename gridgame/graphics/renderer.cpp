@@ -10,14 +10,16 @@
 #include <vector>
 #include <iostream>
 
-RenderBox::RenderBox(const Manager& mgr_n) {
+RenderBox::RenderBox(const Manager& mgr_n)
+{
     mgr = mgr_n;
 }
 
-void RenderBox::render_grid(void) {
-    std::vector<GameObject*> objs = mgr.get_objects();
-    for (auto &&g_obj : objs)
+void RenderBox::render_grid(void)
+{
+    std::vector<GameObject> objs = mgr.get_objects();
+    for (auto&& obj : objs)
     {
-        g_obj->print();
+        obj.print();
     }
 }

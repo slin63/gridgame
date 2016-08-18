@@ -13,23 +13,24 @@
 #include "coordinates.hpp"
 #include "human.hpp"
 #include "tree.hpp"
+#include "grass.hpp"
 #include "renderer.hpp"
 #include "manager.hpp"
 #include "player.hpp"
 
 
 int main(int argc, const char * argv[]) {
-    srand(time(NULL));
-    Human a(CRDS(2, 3));
-    Human b(CRDS(4, 5));
-    Human c(CRDS(4, 3));
-    a.rand_walk();
-    Tree d(CRDS(6,6));
-    Player player(a);
+//    srand(time(0));
+//    Human a(CRDS(2, 3));
+//    Grass b(CRDS(4, 5));
+//    Human c(CRDS(4, 3));
+//    a.rand_walk();
+//    Tree d(CRDS(6,6));
+//    Player player(a);
+    
 
     Manager g;
-    g.add(a);
-    g.add(d);
+    g.populate(6,6);
 
     RenderBox r_box(g);
     r_box.render_grid();

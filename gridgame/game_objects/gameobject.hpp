@@ -26,6 +26,7 @@ public:
     inline void set_symbol(const char&);
     inline void set_health(const int&);
     inline void set_color(const std::string&);
+    inline void set_coord(const CRDS&);
 
 protected:
     CRDS c;
@@ -35,6 +36,8 @@ protected:
 };
 
 extern const std::string colorless_ANSI;
+
+void GameObject::set_coord(const CRDS& c_n) { c = c_n; }
 
 CRDS GameObject::get_c() const { return c; }
 

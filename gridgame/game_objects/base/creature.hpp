@@ -21,6 +21,7 @@ public:
     
 protected:
     bool draw = true;
+    int draw_priority = 1;
 };
 
 
