@@ -27,20 +27,11 @@ public:
     inline void set_health(const int&);
     inline void set_color(const std::string&);
 
-    inline void up(const int&);
-    inline void down(const int&);
-    inline void left(const int&);
-    inline void right(const int&);
-
-    void rand_walk(const int& d = 1);
-
-
 protected:
     CRDS c;
     char symbol;
     int health;
     std::string color;
-    bool draw = true;
 };
 
 extern const std::string colorless_ANSI;
@@ -56,14 +47,5 @@ void GameObject::set_symbol(const char& sym) { symbol = sym; }
 void GameObject::set_health(const int& hp) { health = hp; }
 
 void GameObject::set_color(const std::string& ansi_code) { color = ansi_code; }
-
-void GameObject::up(const int& d = 1) { c.delta(0, -d); }
-
-void GameObject::down(const int& d = 1) { c.delta(0, d); }
-
-void GameObject::right(const int& d = 1) { c.delta(d, 0); }
-
-void GameObject::left(const int& d = 1) { c.delta(-d, 0); }
-
 
 #endif /* gameobject_hpp */

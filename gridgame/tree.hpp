@@ -2,9 +2,9 @@
 #define TREE_HPP
 
 #include "coordinates.hpp"
-#include "gameobject.hpp"
+#include "staticobject.hpp"
 
-class Tree : public GameObject {
+class Tree : public StaticObject {
 public:
     Tree()
     {

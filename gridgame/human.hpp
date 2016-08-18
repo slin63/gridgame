@@ -10,9 +10,9 @@
 #define HUMAN_HPP
 
 #include "coordinates.hpp"
-#include "gameobject.hpp"
+#include "creature.hpp"
 
-class Human : public GameObject {
+class Human : public Creature {
 public:
     Human()
     {
