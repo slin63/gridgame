@@ -11,6 +11,8 @@
 #include <iostream>
 
 
+void GameObject::step() {;}
+
 
 GameObject::GameObject(const CRDS& coords) {
     c = coords;

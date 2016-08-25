@@ -9,6 +9,12 @@
 #include "creature.hpp"
 
 
+void Creature::step()
+{
+    rand_walk();
+}
+
+
 void Creature::rand_walk(const int& d)
 {
     int ch = rand() % 4;

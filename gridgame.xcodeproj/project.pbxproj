@@ -10,6 +10,7 @@
 		6512E8CF1D62B553003F62BF /* coordinates.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6512E8CD1D62B553003F62BF /* coordinates.cpp */; };
 		6512E8D21D62C014003F62BF /* human.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6512E8D01D62C014003F62BF /* human.cpp */; };
 		6512E8D71D62D1FC003F62BF /* renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6512E8D51D62D1FC003F62BF /* renderer.cpp */; };
+		651F468E1D6F84C900C1FD15 /* symbol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 651F468C1D6F84C900C1FD15 /* symbol.cpp */; };
 		653404911D6150BE0088F185 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653404901D6150BE0088F185 /* main.cpp */; };
 		6534049F1D61518F0088F185 /* gameobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6534049D1D61518F0088F185 /* gameobject.cpp */; };
 		653E77F61D654661004BE7C4 /* tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653E77F31D654661004BE7C4 /* tree.cpp */; };
@@ -39,6 +40,8 @@
 		6512E8D11D62C014003F62BF /* human.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = human.hpp; sourceTree = "<group>"; };
 		6512E8D51D62D1FC003F62BF /* renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = renderer.cpp; sourceTree = "<group>"; };
 		6512E8D61D62D1FC003F62BF /* renderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = renderer.hpp; sourceTree = "<group>"; };
+		651F468C1D6F84C900C1FD15 /* symbol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = symbol.cpp; sourceTree = "<group>"; };
+		651F468D1D6F84C900C1FD15 /* symbol.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = symbol.hpp; sourceTree = "<group>"; };
 		6534048D1D6150BE0088F185 /* gridgame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gridgame; sourceTree = BUILT_PRODUCTS_DIR; };
 		653404901D6150BE0088F185 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		6534049D1D61518F0088F185 /* gameobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gameobject.cpp; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 			children = (
 				6512E8D51D62D1FC003F62BF /* renderer.cpp */,
 				6512E8D61D62D1FC003F62BF /* renderer.hpp */,
+				651F468C1D6F84C900C1FD15 /* symbol.cpp */,
+				651F468D1D6F84C900C1FD15 /* symbol.hpp */,
 			);
 			path = graphics;
 			sourceTree = "<group>";
@@ -129,10 +134,10 @@
 		653E77F91D654682004BE7C4 /* static */ = {
 			isa = PBXGroup;
 			children = (
-				653E77F31D654661004BE7C4 /* tree.cpp */,
-				653E77F11D654661004BE7C4 /* tree.hpp */,
 				653E78051D65690A004BE7C4 /* grass.cpp */,
 				653E78061D65690A004BE7C4 /* grass.hpp */,
+				653E77F31D654661004BE7C4 /* tree.cpp */,
+				653E77F11D654661004BE7C4 /* tree.hpp */,
 			);
 			path = static;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 				653E78071D65690A004BE7C4 /* grass.cpp in Sources */,
 				6512E8D21D62C014003F62BF /* human.cpp in Sources */,
 				653404911D6150BE0088F185 /* main.cpp in Sources */,
+				651F468E1D6F84C900C1FD15 /* symbol.cpp in Sources */,
 				6512E8D71D62D1FC003F62BF /* renderer.cpp in Sources */,
 				653E77FE1D6546ED004BE7C4 /* creature.cpp in Sources */,
 				6512E8CF1D62B553003F62BF /* coordinates.cpp in Sources */,

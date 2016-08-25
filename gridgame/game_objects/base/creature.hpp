@@ -9,6 +9,7 @@
 #ifndef creature_hpp
 #define creature_hpp
 #include "gameobject.hpp"
+#include <iostream>
 
 class Creature : public GameObject {
 public:
@@ -17,11 +18,10 @@ public:
     inline void left(const int&);
     inline void right(const int&);
     
-    void rand_walk(const int& d = 1);
+    void step();
     
 protected:
-    bool draw = true;
-    int draw_priority = 1;
+    void rand_walk(const int& d = 1);
 };
 
 

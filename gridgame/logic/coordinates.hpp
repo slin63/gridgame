@@ -18,7 +18,7 @@ public:
     inline int get_x() const;
     inline int get_y() const;
     void delta(const int&, const int&);
-    double distance(const CRDS&);
+    double distance(const CRDS&) const;
     
 private:
     int x;

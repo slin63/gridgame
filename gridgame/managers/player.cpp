@@ -1,5 +1,5 @@
 #include "player.hpp"
 
-Player::Player(const GameObject& game_obj) {
+Player::Player(GameObject* game_obj) {
     avatar = game_obj;
 }

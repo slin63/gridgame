@@ -13,6 +13,7 @@ Human::Human()
     symbol = race_symbol;
     health = race_health;
     color = race_color;
+    draw_priority = creature_draw_priority;
 }
 
 Human::Human(const CRDS& coords)
@@ -21,4 +22,5 @@ Human::Human(const CRDS& coords)
     symbol = race_symbol;
     health = race_health;
     color = race_color;
+    draw_priority = creature_draw_priority;
 }
