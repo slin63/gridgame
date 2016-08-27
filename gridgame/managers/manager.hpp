@@ -25,6 +25,12 @@ public:
     
     inline Player* get_player(void) const;
     
+    void player_up(void) const;
+    void player_down(void) const;
+    void player_left(void) const;
+    void player_right(void) const;
+
+    
 private:
     gVec objects;
     

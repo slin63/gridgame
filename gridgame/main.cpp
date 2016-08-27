@@ -10,6 +10,8 @@
 // http://www.cplusplus.com/forum/general/107753/
 
 #include <iostream>
+#include <unistd.h>
+#include "constants.hpp"
 #include "renderer.hpp"
 #include "manager.hpp"
 #include "player.hpp"
@@ -20,20 +22,40 @@
 
 int main(int argc, const char * argv[]) {
     srand(time(NULL));
-
-    std::cout << "This gonna dim:";
-    Symbol s('!', Symbol::CYAN, Symbol::DEFAULT, Symbol::RED_BG);
-//    s.set_symbol('s');
-//    s.set_color(Symbol::CYAN);
-//    s.set_background(Symbol::RED_BG);
-//    s.set_effect(Symbol::DIM);
-    s.draw_symbol();
-    s.draw_dark();
-    std::cout << " We Good? :" << std::endl;
     
-//    Manager g(5, 5);
-//    
-//    RenderBox r_box(g);
-//    r_box.list_elements();//    g.step();
-//    r_box.list_elements();
+    Manager g(GLOBAL_X, GLOBAL_Y);
+    
+    RenderBox r_box(g);
+    GameObject* plyr = g.get_player()->get_avatar();
+    plyr->set_coord(CRDS(20,0));
+    size_t move;
+    // Enum for movement keys
+    std::cout << r_box.draw_view_of(plyr) << std::endl;
+    while(std::cin >> move)
+    {
+        switch (move) {
+            case 0:
+                plyr->up();
+                break;
+            case 1:
+                plyr->down();
+                break;
+            case 2:
+                plyr->left();
+                break;
+            case 3:
+                plyr->right();
+                break;
+            case 4:
+                plyr->wait();
+                break;
+            
+            default:
+                break;
+        }
+        std::cout << r_box.draw_view_of(plyr) << std::endl;
+        g.step();
+        sleep(0.5);
+    }
+//    std::cout << '1' << std::endl;
 }

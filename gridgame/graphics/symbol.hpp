@@ -16,10 +16,16 @@ public:
     // http://misc.flogisoft.com/bash/tip_colors_and_formatting
     enum Effect
     {
+        // EFFECTS
         BLANK = 0,
         BOLD = 1,
         DIM = 2,
+        UNDERLINED = 4,
+        REVERSE = 7,
+        HIDDEN = 8,
         BLINK = 5, // doesn't work on most terminals
+        
+        // COLORS
         BLACK = 30,
         RED = 31,
         GREEN = 32,
@@ -49,13 +55,16 @@ public:
     inline void set_effect(const Effect&);
     inline void set_background(const Effect&);
     
-    void draw_symbol(const Effect&, const Effect&, const Effect&);
-    void draw_symbol(void);
+    std::string draw_symbol(const Effect&, const Effect&, const Effect&);
+    std::string draw_symbol(void);
     
-    void draw_dark(void);
+    std::string draw_dark(void) const;
+    
+    std::string draw_sneaky(void) const;
+    
     
 private:
-    char symbol = '?';
+    char symb = '?';
     Effect color = DEFAULT;
     Effect effect = DEFAULT;
     Effect background = DEFAULT_BG;
@@ -63,13 +72,13 @@ private:
     
 };
 
-void Symbol::set_symbol(const char& sym_n) { symbol = sym_n; }
+void Symbol::set_symbol(const char& sym_n) { symb = sym_n; }
 
 void Symbol::set_effect(const Effect& efct_n) { effect = efct_n; }
 
-void Symbol::set_color(const Symbol::Effect & clr_n) { color = clr_n; }
+void Symbol::set_color(const Effect & clr_n) { color = clr_n; }
 
-void Symbol::set_background(const Symbol::Effect & bg_n) { background = bg_n; }
+void Symbol::set_background(const Effect & bg_n) { background = bg_n; }
 
 
 #endif /* symbol_hpp */

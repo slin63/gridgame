@@ -21,7 +21,7 @@ private:
     char race_symbol = '@';
     int race_health = 5;
     int creature_draw_priority = 4;
-    std::string race_color = "\033[0;34m"; // ANSI-Blue
+    Symbol::Effect race_color = Symbol::BLUE; // ANSI-Blue
 };
 
 #endif /* player_hpp */

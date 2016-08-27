@@ -13,22 +13,47 @@
 
 void GameObject::step() {;}
 
+char GameObject::choose_random(const std::vector<char>& c_v)
+{
+    size_t ch = rand() % c_v.size();
+    return c_v[ch];
+}
 
 GameObject::GameObject(const CRDS& coords) {
     c = coords;
 }
 
+
 void GameObject::print(void) {
     std::stringstream output;
     output << "CRDS: <" << c.get_x() << "," << c.get_y() << "> | ";
-    output << "SYMB: '" << get_symbol_colored() << "' | HEALTH: " << health << std::endl;
+    output << "SYMB: '" << symbol->draw_symbol() << "' | HEALTH: " << health << std::endl;
     std::cout << output.str();
 }
 
-std::string GameObject::get_symbol_colored() const {
-    std::stringstream colored;
-    colored << color << symbol << colorless_ANSI;
-    return colored.str();
+
+void GameObject::up(const int& d)
+{
+    if (get_c_y() - 1 >= 0)
+        c.delta(0, -d);
+}
+
+void GameObject::down(const int& d)
+{
+    if (get_c_y() + 1 <= GLOBAL_Y - 1)
+        c.delta(0, d);
+}
+
+void GameObject::right(const int& d)
+{
+    if (get_c_x() + 1 <= GLOBAL_X - 1)
+        c.delta(d, 0);
+}
+
+void GameObject::left(const int& d)
+{
+    if (get_c_x() - 1 >= 0)
+        c.delta(-d, 0);
 }
 
 

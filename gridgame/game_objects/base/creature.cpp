@@ -11,22 +11,31 @@
 
 void Creature::step()
 {
-    rand_walk();
+    if(player)
+        /* Nothing so far! */ ;
+    
+    else
+        rand_walk();
 }
 
 
 void Creature::rand_walk(const int& d)
 {
-    int ch = rand() % 4;
-    switch(ch)
+    int chance = rand() % 3;
+    if (chance == 0)
     {
-        case 0 : up(d);
-            break;
-        case 1 : down(d);
-            break;
-        case 2 : left(d);
-            break;
-        case 3 : right(d);
-            break;
+        int ch = rand() % 4;
+        switch(ch)
+        {
+            case 0 : up(d);
+                break;
+            case 1 : down(d);
+                break;
+            case 2 : left(d);
+                break;
+            case 3 : right(d);
+                break;
+        }
     }
+    
 }

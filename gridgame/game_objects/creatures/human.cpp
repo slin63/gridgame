@@ -10,17 +10,19 @@
 
 Human::Human()
 {
-    symbol = race_symbol;
+    symbol->set_symbol(race_symbol);
+    symbol->set_color(race_color);
     health = race_health;
-    color = race_color;
     draw_priority = creature_draw_priority;
+    hides_in_shadows = true;
 }
 
 Human::Human(const CRDS& coords)
 {
     c = coords;
-    symbol = race_symbol;
+    symbol->set_symbol(race_symbol);
+    symbol->set_color(race_color);
     health = race_health;
-    color = race_color;
     draw_priority = creature_draw_priority;
+    hides_in_shadows = true;
 }

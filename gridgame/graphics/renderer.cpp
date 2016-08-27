@@ -9,22 +9,80 @@
 #include "renderer.hpp"
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 
 
 RenderBox::RenderBox(const Manager& mgr_n)
 {
     mgr = mgr_n;
     
-    r_grid.resize(mgr_n.get_y());
-    for (auto&& i : r_grid)
-        i.resize(mgr_n.get_x());
     
+//    r_grid.resize(mgr_n.get_y());
+//    for (auto&& i : r_grid)
+//        i.resize(mgr_n.get_x());
+//    
     assemble_rVec();
-    nearby_square(mgr_n.get_player()->get_avatar(), 500);
+}
+
+
+std::string RenderBox::draw_map()
+{
+    std::stringstream map;
+    for(auto&& y_set : r_grid)
+    {
+        for(auto&& x_set : y_set)
+        {
+            const GameObject* best_draw = highest_draw(x_set);
+            map << best_draw->get_symbol();
+        }
+        map << "\n";
+    }
+    return map.str();
+}
+
+
+std::string RenderBox::draw_view_of(GameObject* g_ptr)
+{
+    assemble_rVec();
+    
+    std::stringstream map;
+    std::vector<CRDS> nearby_objs = nearby(g_ptr, g_ptr->get_vision());
+    // First y coordinate, will use to see if we've moved onto a newline
+    int current = 0;
+    for(auto&& obj : nearby_objs)
+    {
+        const GameObject* other_obj = g_obj_at_crds(obj.get_x(), obj.get_y());
+        // Adds newlines as we advance down to the next y level
+        if (obj.get_y() != current)
+        {
+            current = obj.get_y();
+            map << "\n";
+        }
+        if (obj.distance(g_ptr->get_c()) > g_ptr->get_light())
+        {
+//            std::cout << g_ptr->is_sneaky() << g_ptr->get_symbol() << std::endl;
+            const Symbol* symb = other_obj->get_symbol_ptr();
+            if (other_obj->is_sneaky())
+                map << symb->draw_sneaky();
+            else
+                map << symb->draw_dark();
+        }
+        else
+            map << draw_at(obj);
+    }
+    map << std::endl;
+    return map.str();
+}
+
+
+const GameObject* RenderBox::g_obj_at_crds(const int& x, const int& y)
+{
+    Manager::gVec g_objs = objs_at_crds(x, y);
+    return highest_draw(g_objs);
 }
 
 // Returns objects in a box around the passed g_ptr obj
-std::vector<CRDS> RenderBox::nearby_square(GameObject* g_ptr, const int& dist)
+std::vector<CRDS> RenderBox::nearby(GameObject* g_ptr, const int& dist)
 {
     const CRDS c = g_ptr->get_c();
     std::vector<CRDS> nearby;
@@ -50,32 +108,20 @@ std::vector<CRDS> RenderBox::nearby_square(GameObject* g_ptr, const int& dist)
         }
     }
     
-    for (auto&& i : nearby)
-        std::cout << i.get_x() << " " << i.get_y() << std::endl;
     return nearby;
 }
 
-// Returns CRDS within a radius around passed g_ptr
-std::vector<CRDS> nearby_radius(const std::vector<CRDS>& c_vec, GameObject* g_ptr, const int& radi)
+const Symbol* RenderBox::symb_ptr_at(const CRDS& crds)
 {
-    const CRDS c = g_ptr->get_c();
-    std::vector<CRDS> in_radius;
-    
-    for (auto&& crd : c_vec)
-    {
-        if (crd.distance(c) <= radi) {
-            in_radius.push_back(crd);
-        }
-    }
-    
-    return in_radius;
+    Manager::gVec objs = objs_at_crds(crds.get_x(), crds.get_y());
+    const GameObject* g_obj = highest_draw(objs);
+    return g_obj->get_symbol_ptr();
 }
-
 
 const std::string RenderBox::draw_at(const int& x, const int& y)
 {
     Manager::gVec objs = objs_at_crds(x, y);
-    std::string symbol = highest_draw(objs)->get_symbol_colored();
+    std::string symbol = highest_draw(objs)->get_symbol();
     return symbol;
 }
 
@@ -92,16 +138,10 @@ const GameObject* RenderBox::highest_draw(const Manager::gVec& v)
     // 1 = Definitely draw, 5 = Draw after (1 through 4) have been drawn
     for (auto&& i : v)
     {
-        if (i->get_draw_prty() < max)
+        if (i->get_draw_prty() <= max)
         {
             max = i->get_draw_prty();
             ret = i;
-        }
-        // To handle cases where two objects have the same draw priority
-        else if (i->get_draw_prty() == max)
-        {
-            if ((rand() % 2) == 1)
-                ret = i;
         }
     }
     return ret;
@@ -136,10 +176,17 @@ bool crdsSmallerY(const GameObject* g1, const GameObject* g2)
 
 void RenderBox::assemble_rVec(void)
 {
+    r_grid.clear();
+//    std::cout << mgr.get_y() << " " << mgr.get_x() << " " << r_grid.size();
+    r_grid.resize(mgr.get_y());
+    for (auto&& i : r_grid)
+        i.resize(mgr.get_x());
+    
     for (auto&& ptr : mgr.get_objects())
     {
         r_grid.at(ptr->get_c_y()).at(ptr->get_c_x()).push_back(ptr);
     }
+    
 }
 
 

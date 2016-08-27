@@ -20,7 +20,7 @@ private:
     char static_symbol = ',';
     int static_draw_priority = 6;
     int static_health = 1;
-    std::string static_color = "\033[0;32m"; // ANSI-Green
+    Symbol::Effect static_color = Symbol::GREEN; // ANSI-Green
 };
 
 #endif /* grass_hpp */

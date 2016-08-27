@@ -4,8 +4,8 @@
 #include "tree.hpp"
 #include "grass.hpp"
 #include "human.hpp"
-#include <typeinfo>
-
+#include "constants.hpp"
+#include <exception>
 
 void Manager::step(void)
 {
@@ -16,12 +16,16 @@ void Manager::step(void)
 
 Manager::Manager(const int& x, const int& y)
 {
+    if(x > 100)
+        throw std::range_error("X dimension too large for clean render");
+    
     int area = x * y;
-    HUMAN_LIMIT = area * 0.5;
-    TREE_LIMIT = area * 0.5;
+    HUMAN_LIMIT = area * HUMAN_PCT;
+    TREE_LIMIT = area * TREE_PCT;
     populate(x, y);
     max_x = x;
     max_y = y;
+    
 }
 
 
@@ -81,11 +85,44 @@ void Manager::populate_with_model(const int& limit, const int& x, const int& y)
 template<typename T>
 void Manager::add_player(void)
 {
-    CRDS c(0,0); // Placeholder
+    CRDS c(0, 0); // Placeholder
     T* avatar = new T(c);
     player = new Player(avatar);
     avatar->set_player(true);
-    avatar->set_symbol('U');
+    avatar->get_symbol_ptr()->set_symbol('U');
+    avatar->get_symbol_ptr()->set_effect(Symbol::UNDERLINED);
+    avatar->get_symbol_ptr()->set_color(Symbol::YELLOW);
     add(avatar);
 }
+
+
+void Manager::player_up(void) const
+{
+    GameObject* plyr = get_player()->get_avatar();
+    if (plyr->get_c_y() - 1 >= 0)
+        plyr->up();
+}
+
+void Manager::player_down(void) const
+{
+    GameObject* plyr = get_player()->get_avatar();
+    if (plyr->get_c_y() + 1 <= max_y)
+        plyr->down();
+}
+
+void Manager::player_left(void) const
+{
+    GameObject* plyr = get_player()->get_avatar();
+    if (plyr->get_c_x() - 1 <= 0)
+        plyr->left();
+}
+
+void Manager::player_right(void) const
+{
+    GameObject* plyr = get_player()->get_avatar();
+    if (plyr->get_c_x() + 1 <= max_x)
+        plyr->right();
+}
+
+
 
