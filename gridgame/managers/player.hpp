@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 class GameObject;
+class CRDS;
 
 class Player {
 public:
@@ -17,5 +18,6 @@ private:
 void Player::set_avatar(GameObject* g_obj) { avatar = g_obj; }
 
 GameObject* Player::get_avatar(void) { return avatar; }
+
 
 #endif

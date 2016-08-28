@@ -8,8 +8,8 @@
 
 #include "constants.hpp"
 
-extern const int GLOBAL_Y = 1000;
-extern const int GLOBAL_X = 50;
+extern const int GLOBAL_Y = 20;
+extern const int GLOBAL_X = 20;
 
 extern const double HUMAN_PCT = 0.05;
 extern const double TREE_PCT = 0.1;

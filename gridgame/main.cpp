@@ -15,7 +15,10 @@
 #include "renderer.hpp"
 #include "manager.hpp"
 #include "player.hpp"
+#include "interactions.hpp"
 #include "symbol.hpp"
+
+
 
 // Idea: Have it be a "1 - dimensional" dungeon crawler: The map is (5 * 100) wide and you just keep moving forward beating things up until you die
 
@@ -24,13 +27,19 @@ int main(int argc, const char * argv[]) {
     srand(time(NULL));
     
     Manager g(GLOBAL_X, GLOBAL_Y);
+    Manager* mgr_ptr = &g;
     
     RenderBox r_box(g);
     GameObject* plyr = g.get_player()->get_avatar();
-    plyr->set_coord(CRDS(20,0));
+    plyr->set_coord(CRDS(18,12));
+    
+    InteractMgr im(g.get_player(), mgr_ptr);
+    im.list_nearby();
     size_t move;
     // Enum for movement keys
     std::cout << r_box.draw_view_of(plyr) << std::endl;
+    
+    
     while(std::cin >> move)
     {
         switch (move) {
@@ -54,6 +63,8 @@ int main(int argc, const char * argv[]) {
                 break;
         }
         std::cout << r_box.draw_view_of(plyr) << std::endl;
+//        plyr->print();
+        im.list_nearby();
         g.step();
         sleep(0.5);
     }

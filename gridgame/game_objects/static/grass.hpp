@@ -20,6 +20,7 @@ private:
     char static_symbol = ',';
     int static_draw_priority = 6;
     int static_health = 1;
+    bool static_interact = false;
     Symbol::Effect static_color = Symbol::GREEN; // ANSI-Green
 };
 

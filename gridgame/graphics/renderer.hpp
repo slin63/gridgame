@@ -19,20 +19,16 @@ class Player;
 
 class RenderBox {
 public:
-    // rVec : y        -> x         -> contents at (x, y)
-    typedef std::vector<std::vector<Manager::gVec>> rVec;
     RenderBox() = default;
-    RenderBox(const Manager&);
+    RenderBox(Manager&);
     void list_elements();
     std::string draw_map();
     std::string draw_player_view(); // Calls draw_view_of with player G.O.
     std::string draw_view_of(GameObject*);
-
+    
 private:
-    // Constructors
     Manager mgr;
-    rVec r_grid;
-    void assemble_rVec(void);
+    Manager::rVec r_grid;
     
     // Draw accessories
     // NOT IMPLEMENTED
@@ -45,11 +41,6 @@ private:
     const Manager::gVec& objs_at_crds(const int&, const int&);
     const Symbol* symb_ptr_at(const CRDS&);
     const GameObject* g_obj_at_crds(const int&, const int&);
-    
-    // Nearby -> Get objects -> Renderer - - > Renderer checks if in radius, if not apply gray/dimming effect to symbol -> Render
-    // Out of light radius: Give non-static entities the '!' char, remove bg effects
-    std::vector<CRDS> nearby(GameObject*, const int&);
-    
     
     void sort_crds(Manager::gVec&);
     

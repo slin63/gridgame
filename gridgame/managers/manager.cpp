@@ -16,8 +16,8 @@ void Manager::step(void)
 
 Manager::Manager(const int& x, const int& y)
 {
-    if(x > 100)
-        throw std::range_error("X dimension too large for clean render");
+//    if(x > 100)
+//        throw std::range_error("X dimension too large for clean render");
     
     int area = x * y;
     HUMAN_LIMIT = area * HUMAN_PCT;
@@ -81,6 +81,61 @@ void Manager::populate_with_model(const int& limit, const int& x, const int& y)
         add(ret);
     }
 }
+
+
+void Manager::assemble_rVec(void)
+{
+    rVec r_grid_buffer;
+//    r_grid.clear();
+//        std::cout << mgr.get_y() << " " << mgr.get_x() << " " << r_grid.size();
+    r_grid_buffer.resize(GLOBAL_Y);
+    for (auto&& i : r_grid_buffer)
+        i.resize(GLOBAL_X);
+    
+    for (auto&& ptr : objects)
+    {
+        r_grid_buffer.at(ptr->get_c_y()).at(ptr->get_c_x()).push_back(ptr);
+    }
+    
+    r_grid = r_grid_buffer;
+}
+
+
+// Returns objects in a box around the passed g_ptr obj
+std::vector<CRDS> Manager::nearby(GameObject* g_ptr, const int& dist)
+{
+    const CRDS c = g_ptr->get_c();
+    std::vector<CRDS> nearby;
+    
+    int x_min = c.get_x() - dist;
+    int x_max = c.get_x() + dist;
+    // Remember, the larger the y value the lower it is
+    int y_min = c.get_y() - dist;
+    int y_max = c.get_y() + dist;
+    
+    // Making sure values are in range
+    if (x_min < 0) { x_min = 0; }
+    if (y_min < 0) { y_min = 0; }
+    if (x_max > GLOBAL_X) { x_max = GLOBAL_X; }
+    if (y_max > GLOBAL_Y) { y_max = GLOBAL_Y; }
+    
+    
+    for (int y = y_min; y != y_max + 1; ++y)
+    {
+        for (int x = x_min; x != x_max + 1; ++x)
+        {
+            if (x == GLOBAL_X || y == GLOBAL_Y)
+                continue;
+            else
+                nearby.push_back(CRDS(x, y));
+        }
+    }
+    
+    
+    
+    return nearby;
+}
+
 
 template<typename T>
 void Manager::add_player(void)

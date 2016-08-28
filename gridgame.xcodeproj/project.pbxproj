@@ -20,6 +20,7 @@
 		653E78011D654839004BE7C4 /* staticobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653E77FF1D654839004BE7C4 /* staticobject.cpp */; };
 		653E78071D65690A004BE7C4 /* grass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653E78051D65690A004BE7C4 /* grass.cpp */; };
 		65FA8F271D720712006A5D86 /* constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FA8F251D720712006A5D86 /* constants.cpp */; };
+		65FA8F2B1D72538A006A5D86 /* interactions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FA8F291D72538A006A5D86 /* interactions.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +62,8 @@
 		653E78061D65690A004BE7C4 /* grass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = grass.hpp; sourceTree = "<group>"; };
 		65FA8F251D720712006A5D86 /* constants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = constants.cpp; sourceTree = "<group>"; };
 		65FA8F261D720712006A5D86 /* constants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = constants.hpp; sourceTree = "<group>"; };
+		65FA8F291D72538A006A5D86 /* interactions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interactions.cpp; sourceTree = "<group>"; };
+		65FA8F2A1D72538A006A5D86 /* interactions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = interactions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 		6534048F1D6150BE0088F185 /* gridgame */ = {
 			isa = PBXGroup;
 			children = (
+				65FA8F281D7245F0006A5D86 /* constants */,
 				653404981D6150E50088F185 /* game_objects */,
 				6512E8D31D62D1E0003F62BF /* graphics */,
 				653404971D6150E00088F185 /* logic */,
@@ -157,8 +161,8 @@
 		653E77FB1D6546C3004BE7C4 /* managers */ = {
 			isa = PBXGroup;
 			children = (
-				65FA8F251D720712006A5D86 /* constants.cpp */,
-				65FA8F261D720712006A5D86 /* constants.hpp */,
+				65FA8F291D72538A006A5D86 /* interactions.cpp */,
+				65FA8F2A1D72538A006A5D86 /* interactions.hpp */,
 				653E77F51D654661004BE7C4 /* manager.cpp */,
 				653E77F01D654661004BE7C4 /* manager.hpp */,
 				653E77F41D654661004BE7C4 /* player.cpp */,
@@ -176,6 +180,15 @@
 				653E78001D654839004BE7C4 /* staticobject.hpp */,
 			);
 			path = base;
+			sourceTree = "<group>";
+		};
+		65FA8F281D7245F0006A5D86 /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				65FA8F251D720712006A5D86 /* constants.cpp */,
+				65FA8F261D720712006A5D86 /* constants.hpp */,
+			);
+			path = constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +259,7 @@
 				6512E8CF1D62B553003F62BF /* coordinates.cpp in Sources */,
 				653E77F81D654661004BE7C4 /* manager.cpp in Sources */,
 				653E77F61D654661004BE7C4 /* tree.cpp in Sources */,
+				65FA8F2B1D72538A006A5D86 /* interactions.cpp in Sources */,
 				653E78011D654839004BE7C4 /* staticobject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

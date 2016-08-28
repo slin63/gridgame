@@ -29,8 +29,10 @@ public:
     inline int get_light() const;
     inline int get_draw_prty() const;
     inline bool is_sneaky() const;
+    inline bool is_interactive() const;
     inline bool should_draw() const;
     inline std::string get_symbol() const;
+    
     void print();
     
     // Virtual tag to enable polymorphism
@@ -61,6 +63,7 @@ protected:
     bool player = false;
     bool draw = true;
     bool hides_in_shadows = false;
+    bool can_interact = true;
     int draw_priority = 10;
     int vision_range = 10;
     int light_range = 5;
@@ -71,6 +74,8 @@ void GameObject::wait(void) { ; }
 
 int GameObject::get_c_x() const { return c.get_x(); }
 int GameObject::get_c_y() const { return c.get_y(); }
+
+bool GameObject::is_interactive() const { return can_interact; }
 
 bool GameObject::is_sneaky() const { return hides_in_shadows; }
 

@@ -12,7 +12,11 @@ class Manager
 public:
     Manager() = default;
     Manager(const int&, const int&);
+    
     typedef std::vector<GameObject*> gVec;
+    // rVec : y        -> x         -> contents at (x, y)
+    typedef std::vector<std::vector<Manager::gVec>> rVec;
+    
     inline gVec get_objects();
     inline void add(GameObject*);
 
@@ -22,16 +26,21 @@ public:
     
     inline int get_x(void) const;
     inline int get_y(void) const;
+    inline rVec& get_r_grid(void);
     
     inline Player* get_player(void) const;
+    
+    static std::vector<CRDS> nearby(GameObject*, const int&);
     
     void player_up(void) const;
     void player_down(void) const;
     void player_left(void) const;
     void player_right(void) const;
-
     
+    void assemble_rVec(void);
+
 private:
+    rVec r_grid;
     gVec objects;
     
     int HUMAN_LIMIT;
@@ -55,6 +64,8 @@ private:
     int max_x;
     int max_y;
 };
+
+Manager::rVec& Manager::get_r_grid(void) { return r_grid; }
 
 int Manager::get_x(void) const { return max_x; }
 int Manager::get_y(void) const { return max_y; }

@@ -13,6 +13,7 @@ Grass::Grass() {
     symbol->set_color(static_color);
     health = static_health;
     draw_priority = static_draw_priority;
+    can_interact = static_interact;
 }
 
 Grass::Grass(const CRDS& coords) {
@@ -20,5 +21,6 @@ Grass::Grass(const CRDS& coords) {
     symbol->set_color(static_color);
     health = static_health;
     draw_priority = static_draw_priority;
+    can_interact = static_interact;
     c = coords;
 }
