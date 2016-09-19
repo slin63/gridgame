@@ -12,19 +12,19 @@
 #include <sstream>
 
 
-RenderBox::RenderBox(Manager& mgr_n)
+RenderBox::RenderBox(Manager* mgr_n)
 {
     mgr = mgr_n;
-    mgr_n.assemble_rVec();
-    r_grid = mgr_n.get_r_grid();
+    mgr_n->assemble_rVec();
+    r_grid = mgr_n->get_r_grid();
 }
 
 
 std::string RenderBox::draw_map()
 {
     std::stringstream map;
-    mgr.assemble_rVec();
-    r_grid = mgr.get_r_grid();
+    mgr->assemble_rVec();
+    r_grid = mgr->get_r_grid();
     for(auto&& y_set : r_grid)
     {
         for(auto&& x_set : y_set)
@@ -40,8 +40,7 @@ std::string RenderBox::draw_map()
 
 std::string RenderBox::draw_view_of(GameObject* g_ptr)
 {
-    mgr.assemble_rVec();
-    r_grid = mgr.get_r_grid();
+    r_grid = mgr->get_r_grid();
     
     std::stringstream map;
     std::vector<CRDS> nearby_objs = Manager::nearby(g_ptr, g_ptr->get_vision());
@@ -56,6 +55,7 @@ std::string RenderBox::draw_view_of(GameObject* g_ptr)
             current_y = obj.get_y();
             map << "\n";
         }
+        // Apply darkness effects
         if (obj.distance(g_ptr->get_c()) > g_ptr->get_light())
         {
             const Symbol* symb = other_obj->get_symbol_ptr();
@@ -132,7 +132,7 @@ const Manager::gVec& RenderBox::objs_at_crds(const int& x, const int& y)
 
 void RenderBox::list_elements(void)
 {
-    Manager::gVec objs = mgr.get_objects();
+    Manager::gVec objs = mgr->get_objects();
     for (auto&& obj : objs)
         obj->print();
 }

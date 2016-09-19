@@ -17,6 +17,9 @@
 #include <cstdlib>
 
 
+// On step: Check if alive (health > 0)
+// If dead, set bg to red or whatever, remove "alive" step function components
+
 class GameObject {
 public:
     GameObject() = default;
@@ -35,9 +38,15 @@ public:
     
     void print();
     
-    // Virtual tag to enable polymorphism
+    // Interactions
+    // Define object attack method here
+    virtual void attack(GameObject*, const int&);
+    
+    // Define per-turn actions here
     virtual void step();
+    void check_alive();
 
+    inline void delta_health(const int&);
     inline void set_health(const int&);
     inline void set_coord(const CRDS&);
     inline void set_draw_prty(const int&);
@@ -64,6 +73,9 @@ protected:
     bool draw = true;
     bool hides_in_shadows = false;
     bool can_interact = true;
+    
+    bool alive = true;
+    
     int draw_priority = 10;
     int vision_range = 10;
     int light_range = 5;
@@ -98,6 +110,8 @@ bool GameObject::should_draw() const { return draw; }
 void GameObject::set_player(const bool& b) { player = b; }
 
 void GameObject::set_symbol(const char& c) { symbol->set_symbol(c); }
+
+void GameObject::delta_health(const int & i) { health += i; }
 
 void GameObject::set_health(const int& hp) { health = hp; }
 

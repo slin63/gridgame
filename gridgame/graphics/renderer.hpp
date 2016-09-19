@@ -20,14 +20,14 @@ class Player;
 class RenderBox {
 public:
     RenderBox() = default;
-    RenderBox(Manager&);
+    RenderBox(Manager*);
     void list_elements();
     std::string draw_map();
     std::string draw_player_view(); // Calls draw_view_of with player G.O.
     std::string draw_view_of(GameObject*);
     
 private:
-    Manager mgr;
+    Manager* mgr;
     Manager::rVec r_grid;
     
     // Draw accessories

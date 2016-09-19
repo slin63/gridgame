@@ -11,7 +11,18 @@
 #include <iostream>
 
 
-void GameObject::step() {;}
+void GameObject::step(void) {;}
+
+void GameObject::check_alive(void)
+{
+    if (health <= 0)
+        alive = false;
+}
+
+void GameObject::attack(GameObject* other_ptr, const int& dmg)
+{
+    other_ptr->delta_health(dmg);
+}
 
 char GameObject::choose_random(const std::vector<char>& c_v)
 {

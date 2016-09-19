@@ -1,5 +1,4 @@
 #include "manager.hpp"
-
 #include "coordinates.hpp"
 #include "tree.hpp"
 #include "grass.hpp"
@@ -18,14 +17,12 @@ Manager::Manager(const int& x, const int& y)
 {
 //    if(x > 100)
 //        throw std::range_error("X dimension too large for clean render");
-    
     int area = x * y;
     HUMAN_LIMIT = area * HUMAN_PCT;
     TREE_LIMIT = area * TREE_PCT;
     populate(x, y);
     max_x = x;
     max_y = y;
-    
 }
 
 
@@ -86,8 +83,6 @@ void Manager::populate_with_model(const int& limit, const int& x, const int& y)
 void Manager::assemble_rVec(void)
 {
     rVec r_grid_buffer;
-//    r_grid.clear();
-//        std::cout << mgr.get_y() << " " << mgr.get_x() << " " << r_grid.size();
     r_grid_buffer.resize(GLOBAL_Y);
     for (auto&& i : r_grid_buffer)
         i.resize(GLOBAL_X);
@@ -119,6 +114,10 @@ std::vector<CRDS> Manager::nearby(GameObject* g_ptr, const int& dist)
     if (x_max > GLOBAL_X) { x_max = GLOBAL_X; }
     if (y_max > GLOBAL_Y) { y_max = GLOBAL_Y; }
     
+    std::cout << dist << std::endl;
+    std::cout << x_max << " " << y_max << std::endl;
+    std::cout << x_min << " " << y_min << std::endl;
+    
     
     for (int y = y_min; y != y_max + 1; ++y)
     {
@@ -128,10 +127,12 @@ std::vector<CRDS> Manager::nearby(GameObject* g_ptr, const int& dist)
                 continue;
             else
                 nearby.push_back(CRDS(x, y));
+            
         }
     }
     
-    
+    for(auto i : nearby)
+        std::cout << i.get_x() << ',' << i.get_y() << std::endl;
     
     return nearby;
 }
