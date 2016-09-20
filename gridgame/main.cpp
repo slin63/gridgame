@@ -31,47 +31,4 @@ int main(int argc, const char * argv[]) {
     GameMgr game;
     
     game.action_menu();
-    
-//    Manager g(GLOBAL_X, GLOBAL_Y);
-//    Manager* mgr_ptr = &g;
-//    
-//    RenderBox r_box(g);
-//    GameObject* plyr = g.get_player()->get_avatar();
-//    plyr->set_coord(CRDS(18,12));
-//    
-//    InteractMgr im(g.get_player(), mgr_ptr);
-//    im.list_nearby();
-//    size_t move;
-//    // Enum for movement keys
-//    std::cout << r_box.draw_view_of(plyr) << std::endl;
-//    
-//    while(std::cin >> move)
-//    {
-//        switch (move) {
-//            case 0:
-//                plyr->up();
-//                break;
-//            case 1:
-//                plyr->down();
-//                break;
-//            case 2:
-//                plyr->left();
-//                break;
-//            case 3:
-//                plyr->right();
-//                break;
-//            case 4:
-//                plyr->wait();
-//                break;
-//            
-//            default:
-//                break;
-//        }
-//        std::cout << r_box.draw_view_of(plyr) << std::endl;
-////        plyr->print();
-//        im.list_nearby();
-//        g.step();
-//        sleep(0.5);
-//    }
-//    std::cout << '1' << std::endl;
 }

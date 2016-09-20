@@ -11,12 +11,19 @@
 #include <iostream>
 
 
-void GameObject::step(void) {;}
+void GameObject::step(void)
+{
+    check_alive();
+}
+
 
 void GameObject::check_alive(void)
 {
     if (health <= 0)
+    {
         alive = false;
+        symbol->set_background(Symbol::Effect::RED_BG);
+    }
 }
 
 void GameObject::attack(GameObject* other_ptr, const int& dmg)

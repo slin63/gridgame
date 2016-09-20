@@ -26,10 +26,17 @@ private:
     RenderBox* rndr_box;
     InteractMgr* react_box;
     GameObject* plyr;
+    
+    void help_menu(void);
+    
+    void attack_menu(void);
+    void report_attack(GameObject*, GameObject*, const int&);
+    
     // Make sure user didn't fuck up
     bool check_input(const char&);
     void input_error(const char&);
     void refresh_manager(void) { mgr_ptr->assemble_rVec(); }
+    void refresh_react_box(void) { react_box->refresh_nearby_objs(); }
     
     void step();
 };

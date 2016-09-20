@@ -12,10 +12,19 @@
 void Creature::step()
 {
     if(player)
+    {
         /* Nothing so far! */ ;
+    }
     
     else
-        rand_walk();
+    {
+        check_alive();
+        
+        if (alive)
+        {
+            rand_walk();
+        }
+    }
 }
 
 

@@ -25,13 +25,18 @@ public:
     GameObject() = default;
     GameObject(const CRDS&);
     inline CRDS get_c() const;
+    inline int get_strength() const;
+    inline std::string get_name() const;
+    inline std::string get_death_msg() const;
     inline int get_c_x() const;
     inline int get_c_y() const;
+    inline int get_health() const;
     inline int get_vision() const;
     inline Symbol* get_symbol_ptr() const;
     inline int get_light() const;
     inline int get_draw_prty() const;
     inline bool is_sneaky() const;
+    inline bool is_alive() const;
     inline bool is_interactive() const;
     inline bool should_draw() const;
     inline std::string get_symbol() const;
@@ -44,7 +49,7 @@ public:
     
     // Define per-turn actions here
     virtual void step();
-    void check_alive();
+    virtual void check_alive();
 
     inline void delta_health(const int&);
     inline void set_health(const int&);
@@ -68,6 +73,10 @@ private:
 protected:
     CRDS c;
     Symbol* symbol = new Symbol();
+    
+    std::string name = "Game Object";
+    std::string death_msg = "has been slain!";
+    
     int health;
     bool player = false;
     bool draw = true;
@@ -76,6 +85,7 @@ protected:
     
     bool alive = true;
     
+    int strength = 15;
     int draw_priority = 10;
     int vision_range = 10;
     int light_range = 5;
@@ -89,9 +99,19 @@ int GameObject::get_c_y() const { return c.get_y(); }
 
 bool GameObject::is_interactive() const { return can_interact; }
 
+bool GameObject::is_alive() const { return alive; }
+
 bool GameObject::is_sneaky() const { return hides_in_shadows; }
 
 int GameObject::get_vision() const { return vision_range; }
+
+std::string GameObject::get_name() const { return name; }
+
+std::string GameObject::get_death_msg() const { return death_msg; }
+
+int GameObject::get_strength() const { return strength; }
+
+int GameObject::get_health() const { return health; }
 
 int GameObject::get_light() const { return light_range; }
 

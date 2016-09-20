@@ -114,9 +114,6 @@ std::vector<CRDS> Manager::nearby(GameObject* g_ptr, const int& dist)
     if (x_max > GLOBAL_X) { x_max = GLOBAL_X; }
     if (y_max > GLOBAL_Y) { y_max = GLOBAL_Y; }
     
-    std::cout << dist << std::endl;
-    std::cout << x_max << " " << y_max << std::endl;
-    std::cout << x_min << " " << y_min << std::endl;
     
     
     for (int y = y_min; y != y_max + 1; ++y)
@@ -130,10 +127,12 @@ std::vector<CRDS> Manager::nearby(GameObject* g_ptr, const int& dist)
             
         }
     }
-    
-    for(auto i : nearby)
-        std::cout << i.get_x() << ',' << i.get_y() << std::endl;
-    
+//    std::cout << dist << std::endl;
+//    std::cout << x_max << " " << y_max << std::endl;
+//    std::cout << x_min << " " << y_min << std::endl;    
+//    for(auto i : nearby)
+//        std::cout << i.get_x() << ',' << i.get_y() << std::endl;
+//    
     return nearby;
 }
 

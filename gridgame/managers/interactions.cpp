@@ -8,6 +8,7 @@
 
 #include "interactions.hpp"
 #include <iostream>
+//#include <map>
 
 
 InteractMgr::InteractMgr(Player* plyr_n, Manager* mgr_n)
@@ -17,31 +18,55 @@ InteractMgr::InteractMgr(Player* plyr_n, Manager* mgr_n)
 };
 
 
-void InteractMgr::list_nearby()
+Manager::gVec InteractMgr::compress_vector(const std::vector<Manager::gVec>& fat_v)
 {
-//    mgr->assemble_rVec();
-    std::vector<Manager::gVec> near = nearby_objs();
-    std::cout << "Nearby: " << std::endl;
-    plyr->get_avatar()->print();
-    for (auto&& i : near)
+    Manager::gVec ret_v;
+    
+    for (auto&& i : fat_v)
     {
         for (auto&& j : i)
         {
-            if (j->is_interactive())
-            {
-                if (j->is_player())
-                    continue;
-                std::cout << "    ";
-                j->print();
-            }
+            ret_v.push_back(j);
         }
+    }
+    
+    return ret_v;
+}
+
+
+void InteractMgr::refresh_nearby_objs()
+{
+    Manager::gVec near = compress_vector(nearby_objs());
+    std::map<int, GameObject*> menu;
+    size_t id = 0;
+    
+    for (auto&& i : near)
+    {
+        if (i->is_interactive() && !i->is_player())
+        {
+            menu[id] = i;
+            ++id;
+        }
+    }
+    
+    id2obj_map = menu;
+}
+
+
+
+void InteractMgr::list_nearby()
+{
+    for (auto&& i : id2obj_map)
+    {
+        std::cout << i.first << ": ";
+        i.second->print();
     }
 }
 
 
-std::vector<Manager::gVec> InteractMgr::nearby_objs()
+std::vector<Manager::gVec> InteractMgr::nearby_objs(const int& range)
 {
-    std::vector<CRDS> near_crds = Manager::nearby(plyr->get_avatar(), 1);
+    std::vector<CRDS> near_crds = Manager::nearby(plyr->get_avatar(), range);
     std::vector<Manager::gVec> nearby_objs;
     
     
@@ -56,6 +81,6 @@ std::vector<Manager::gVec> InteractMgr::nearby_objs()
 
 Manager::gVec& InteractMgr::objs_at_crds(const int& x, const int& y)
 {
-    std::cout << "Object at " << x << ", " << y << std::endl;
+//    std::cout << "Object at " << x << ", " << y << std::endl;
     return mgr->get_r_grid().at(y).at(x);
 }

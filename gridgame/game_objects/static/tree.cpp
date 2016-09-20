@@ -5,6 +5,7 @@ Tree::Tree() {
     symbol->set_symbol(static_symbol);
     symbol->set_color(static_color);
     draw_priority = static_draw_priority;
+    name = "Tree";
 }
 
 Tree::Tree(const CRDS& coords) {
@@ -12,5 +13,6 @@ Tree::Tree(const CRDS& coords) {
     symbol->set_color(static_color);
     health = static_health;
     draw_priority = static_draw_priority;
+    name = "Tree";
     c = coords;
 }

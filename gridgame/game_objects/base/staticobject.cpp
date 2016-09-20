@@ -8,3 +8,12 @@
 
 #include "staticobject.hpp"
 
+void StaticObject::check_alive(void)
+{
+    if (health <= 0)
+    {
+        alive = false;
+        symbol->set_symbol('x');
+        symbol->set_color(Symbol::Effect::WHITE);
+    }
+}

@@ -15,6 +15,8 @@ Human::Human()
     health = race_health;
     draw_priority = creature_draw_priority;
     hides_in_shadows = true;
+    death_msg = "has been torn apart!";
+    name = "Human";
 }
 
 Human::Human(const CRDS& coords)
@@ -25,4 +27,6 @@ Human::Human(const CRDS& coords)
     health = race_health;
     draw_priority = creature_draw_priority;
     hides_in_shadows = true;
+    death_msg = "has been torn apart!";
+    name = "Human";
 }
