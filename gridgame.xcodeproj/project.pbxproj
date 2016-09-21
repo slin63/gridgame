@@ -19,6 +19,8 @@
 		653E77FE1D6546ED004BE7C4 /* creature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653E77FC1D6546ED004BE7C4 /* creature.cpp */; };
 		653E78011D654839004BE7C4 /* staticobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653E77FF1D654839004BE7C4 /* staticobject.cpp */; };
 		653E78071D65690A004BE7C4 /* grass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 653E78051D65690A004BE7C4 /* grass.cpp */; };
+		6547A2431D9305A800974764 /* goblin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6547A2411D9305A800974764 /* goblin.cpp */; };
+		6547A2491D93087000974764 /* behavior.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6547A2471D93087000974764 /* behavior.cpp */; };
 		65FA8F271D720712006A5D86 /* constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FA8F251D720712006A5D86 /* constants.cpp */; };
 		65FA8F2B1D72538A006A5D86 /* interactions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FA8F291D72538A006A5D86 /* interactions.cpp */; };
 		65FA8F2E1D75F975006A5D86 /* gamemgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65FA8F2C1D75F974006A5D86 /* gamemgr.cpp */; };
@@ -61,6 +63,10 @@
 		653E78001D654839004BE7C4 /* staticobject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = staticobject.hpp; sourceTree = "<group>"; };
 		653E78051D65690A004BE7C4 /* grass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grass.cpp; sourceTree = "<group>"; };
 		653E78061D65690A004BE7C4 /* grass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = grass.hpp; sourceTree = "<group>"; };
+		6547A2411D9305A800974764 /* goblin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = goblin.cpp; sourceTree = "<group>"; };
+		6547A2421D9305A800974764 /* goblin.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = goblin.hpp; sourceTree = "<group>"; };
+		6547A2471D93087000974764 /* behavior.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = behavior.cpp; sourceTree = "<group>"; };
+		6547A2481D93087000974764 /* behavior.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = behavior.hpp; sourceTree = "<group>"; };
 		65FA8F251D720712006A5D86 /* constants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = constants.cpp; sourceTree = "<group>"; };
 		65FA8F261D720712006A5D86 /* constants.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = constants.hpp; sourceTree = "<group>"; };
 		65FA8F291D72538A006A5D86 /* interactions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = interactions.cpp; sourceTree = "<group>"; };
@@ -110,22 +116,24 @@
 		6534048F1D6150BE0088F185 /* gridgame */ = {
 			isa = PBXGroup;
 			children = (
+				6547A2461D93085D00974764 /* behavior */,
 				65FA8F281D7245F0006A5D86 /* constants */,
 				653404981D6150E50088F185 /* game_objects */,
 				6512E8D31D62D1E0003F62BF /* graphics */,
-				653404971D6150E00088F185 /* logic */,
+				653404971D6150E00088F185 /* map_logic */,
 				653E77FB1D6546C3004BE7C4 /* managers */,
 				653404901D6150BE0088F185 /* main.cpp */,
 			);
 			path = gridgame;
 			sourceTree = "<group>";
 		};
-		653404971D6150E00088F185 /* logic */ = {
+		653404971D6150E00088F185 /* map_logic */ = {
 			isa = PBXGroup;
 			children = (
 				6512E8CD1D62B553003F62BF /* coordinates.cpp */,
 				6512E8CE1D62B553003F62BF /* coordinates.hpp */,
 			);
+			name = map_logic;
 			path = logic;
 			sourceTree = "<group>";
 		};
@@ -157,6 +165,8 @@
 			children = (
 				6512E8D01D62C014003F62BF /* human.cpp */,
 				6512E8D11D62C014003F62BF /* human.hpp */,
+				6547A2411D9305A800974764 /* goblin.cpp */,
+				6547A2421D9305A800974764 /* goblin.hpp */,
 			);
 			path = creatures;
 			sourceTree = "<group>";
@@ -185,6 +195,15 @@
 				653E78001D654839004BE7C4 /* staticobject.hpp */,
 			);
 			path = base;
+			sourceTree = "<group>";
+		};
+		6547A2461D93085D00974764 /* behavior */ = {
+			isa = PBXGroup;
+			children = (
+				6547A2471D93087000974764 /* behavior.cpp */,
+				6547A2481D93087000974764 /* behavior.hpp */,
+			);
+			name = behavior;
 			sourceTree = "<group>";
 		};
 		65FA8F281D7245F0006A5D86 /* constants */ = {
@@ -254,10 +273,12 @@
 			files = (
 				653E77F71D654661004BE7C4 /* player.cpp in Sources */,
 				65FA8F2E1D75F975006A5D86 /* gamemgr.cpp in Sources */,
+				6547A2491D93087000974764 /* behavior.cpp in Sources */,
 				6534049F1D61518F0088F185 /* gameobject.cpp in Sources */,
 				653E78071D65690A004BE7C4 /* grass.cpp in Sources */,
 				6512E8D21D62C014003F62BF /* human.cpp in Sources */,
 				65FA8F271D720712006A5D86 /* constants.cpp in Sources */,
+				6547A2431D9305A800974764 /* goblin.cpp in Sources */,
 				653404911D6150BE0088F185 /* main.cpp in Sources */,
 				651F468E1D6F84C900C1FD15 /* symbol.cpp in Sources */,
 				6512E8D71D62D1FC003F62BF /* renderer.cpp in Sources */,

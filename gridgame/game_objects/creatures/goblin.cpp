@@ -1,36 +1,36 @@
 //
-//  human.cpp
+//  goblin.cpp
 //  gridgame
 //
-//  Created by SLIN63 on 8/15/16.
+//  Created by SLIN63 on 9/21/16.
 //  Copyright © 2016 SLIN63. All rights reserved.
 //
 
-#include "human.hpp"
+#include "goblin.hpp"
 
-Human::Human()
+Goblin::Goblin()
 {
     symbol->set_symbol(race_symbol);
     symbol->set_color(race_color);
     health = race_health;
     draw_priority = creature_draw_priority;
     hides_in_shadows = true;
-    dead_color = Symbol::Effect::RED_BG;
+    dead_color = race_dead_color;
     dead_symbol = race_symbol;
-    death_msg = "has been torn apart!";
-    name = "Human";
+    death_msg = race_death_msg;
+    name = race_name;
 }
 
-Human::Human(const CRDS& coords)
+Goblin::Goblin(const CRDS& coords)
 {
     c = coords;
     symbol->set_symbol(race_symbol);
     symbol->set_color(race_color);
     health = race_health;
-    dead_color = Symbol::Effect::RED_BG;
-    dead_symbol = race_symbol;
     draw_priority = creature_draw_priority;
     hides_in_shadows = true;
-    death_msg = "has been torn apart!";
-    name = "Human";
+    dead_color = race_dead_color;
+    dead_symbol = race_symbol;
+    death_msg = race_death_msg;
+    name = race_name;
 }

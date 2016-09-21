@@ -12,8 +12,7 @@
 #include "gameobject.hpp"
 
 class StaticObject : public GameObject {
-public:
-    void check_alive();
+    ;
 };
 
 

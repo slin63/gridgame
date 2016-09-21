@@ -15,8 +15,8 @@ class Creature : public GameObject {
 public:
     void step();
     
-protected:
-    void rand_walk(const int& d = 1);
+//protected:
+//    void rand_walk(const int& d = 1);
 };
 
 

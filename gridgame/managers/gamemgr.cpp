@@ -90,21 +90,21 @@ void GameMgr::report_attack(GameObject* attacker, GameObject* victim, const int&
 }
 
 
-
 void GameMgr::step()
 {
+    ++step_count;
     refresh_manager();
     refresh_react_box();
-    
+    std::cout << step_count << std::endl;
     std::cout << rndr_box->draw_view_of(plyr) << std::endl;
-//    react_box->list_nearby();
     mgr_ptr->step();
 }
 
 
-bool GameMgr::check_input(const char& ch)
+bool GameMgr::check_input(char& ch)
 {
     // Processing needed
+    ch = tolower(ch);
     return true;
 }
 

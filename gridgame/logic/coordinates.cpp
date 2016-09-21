@@ -26,3 +26,20 @@ double CRDS::distance(const CRDS& other) const {
     double dist = pow(x_dist + y_dist, 0.5);
     return dist;
 }
+
+CRDS CRDS::largest_component(void) const
+{
+    int largest_x = 0;
+    int largest_y = 0;
+
+    if (std::abs(x) > std::abs(y))
+        largest_x = x;
+    else if (std::abs(x) == std::abs(y))
+        largest_x = x;
+    else
+        largest_y = y;
+    
+    CRDS ret(largest_x, largest_y);
+    
+    return ret;
+}

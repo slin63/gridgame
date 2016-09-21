@@ -140,10 +140,11 @@ std::vector<CRDS> Manager::nearby(GameObject* g_ptr, const int& dist)
 template<typename T>
 void Manager::add_player(void)
 {
-    CRDS c(0, 0); // Placeholder
+    CRDS c(GLOBAL_X / 2, 0); // Placeholder
     T* avatar = new T(c);
     player = new Player(avatar);
     avatar->set_player(true);
+    avatar->set_coord(c);
     avatar->get_symbol_ptr()->set_symbol('U');
     avatar->get_symbol_ptr()->set_effect(Symbol::UNDERLINED);
     avatar->get_symbol_ptr()->set_color(Symbol::YELLOW);

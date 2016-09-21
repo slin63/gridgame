@@ -21,11 +21,15 @@ public:
     GameMgr();
     void action_menu(void);
     
+    inline size_t get_step();
+    
 private:
     Manager* mgr_ptr;
     RenderBox* rndr_box;
     InteractMgr* react_box;
     GameObject* plyr;
+    
+    size_t step_count = 0;
     
     void help_menu(void);
     
@@ -33,7 +37,7 @@ private:
     void report_attack(GameObject*, GameObject*, const int&);
     
     // Make sure user didn't fuck up
-    bool check_input(const char&);
+    bool check_input(char&);
     void input_error(const char&);
     void refresh_manager(void) { mgr_ptr->assemble_rVec(); }
     void refresh_react_box(void) { react_box->refresh_nearby_objs(); }
@@ -41,5 +45,6 @@ private:
     void step();
 };
 
+size_t GameMgr::get_step(void) { return step_count; }
 
 #endif /* gamemgr_hpp */

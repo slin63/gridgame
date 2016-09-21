@@ -22,7 +22,8 @@ void GameObject::check_alive(void)
     if (health <= 0)
     {
         alive = false;
-        symbol->set_background(Symbol::Effect::RED_BG);
+        symbol->set_background(dead_color);
+        symbol->set_symbol(dead_symbol);
     }
 }
 

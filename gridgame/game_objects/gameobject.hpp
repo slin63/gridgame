@@ -12,6 +12,7 @@
 #include "coordinates.hpp"
 #include "symbol.hpp"
 #include "constants.hpp"
+#include "behavior.hpp"
 #include <vector>
 #include <string>
 #include <cstdlib>
@@ -73,8 +74,10 @@ private:
 protected:
     CRDS c;
     Symbol* symbol = new Symbol();
-    
     std::string name = "Game Object";
+    
+    char dead_symbol;
+    Symbol::Effect dead_color = Symbol::Effect::RED_BG;
     std::string death_msg = "has been slain!";
     
     int health;

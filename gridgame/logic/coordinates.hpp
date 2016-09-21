@@ -19,6 +19,7 @@ public:
     inline int get_y() const;
     void delta(const int&, const int&);
     double distance(const CRDS&) const;
+    CRDS largest_component(void) const;
     
 private:
     int x;
