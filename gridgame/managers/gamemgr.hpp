@@ -34,7 +34,7 @@ private:
     void help_menu(void);
     
     void attack_menu(void);
-    void report_attack(GameObject*, GameObject*, const int&);
+    
     
     // Make sure user didn't fuck up
     bool check_input(char&);

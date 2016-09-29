@@ -32,7 +32,7 @@ private:
     
     // Draw accessories
     // NOT IMPLEMENTED
-    std::string add_borders(const std::string&);
+    std::string add_borders(const std::string&, const int&, const int&);
     
     // Draw logic
     const std::string draw_at(const int&, const int&);

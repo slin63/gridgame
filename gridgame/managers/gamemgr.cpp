@@ -66,27 +66,8 @@ void GameMgr::attack_menu()
     int target_id;
     std::cin >> target_id;
     GameObject* target = react_box->get_nearby_objs()[target_id];
-    int damage = -(rand() % plyr->get_strength());
     
-    plyr->attack(target, damage);
-    report_attack(plyr, target, damage);
-}
-
-
-void GameMgr::report_attack(GameObject* attacker, GameObject* victim, const int& dmg)
-{
-    std::string attacker_name = attacker->get_name();
-    std::string victim_name = victim->get_name();
-    
-    std::cout << attacker_name << " dealt " << -dmg << " damage to " << victim_name << "!" << std::endl;
-    if (!victim->is_alive() || victim->get_health() <= 0)
-    {
-        std::cout << victim_name << " " << victim->get_death_msg() << std::endl;
-    }
-    else
-    {
-        std::cout << victim_name << " has " << victim->get_health() << " HP remaining. " << std::endl;
-    }
+    plyr->attack(target, plyr->get_strength());
 }
 
 
@@ -97,7 +78,7 @@ void GameMgr::step()
     refresh_react_box();
     std::cout << step_count << std::endl;
     std::cout << rndr_box->draw_view_of(plyr) << std::endl;
-    mgr_ptr->step();
+    react_box->step(step_count);
 }
 
 

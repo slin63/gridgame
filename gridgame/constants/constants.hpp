@@ -14,5 +14,6 @@ extern const int GLOBAL_X;
 
 extern const double HUMAN_PCT;
 extern const double TREE_PCT;
+extern const double GOBLIN_PCT;
 
 #endif /* constants_hpp */

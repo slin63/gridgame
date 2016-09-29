@@ -3,14 +3,15 @@
 #include "tree.hpp"
 #include "grass.hpp"
 #include "human.hpp"
+#include "goblin.hpp"
 #include "constants.hpp"
 #include <exception>
 
-void Manager::step(void)
-{
-    for (auto&& i : objects)
-        i->step();
-}
+//void Manager::step(void)
+//{
+//    for (auto&& i : objects)
+//        i->step();
+//}
 
 
 Manager::Manager(const int& x, const int& y)
@@ -20,6 +21,7 @@ Manager::Manager(const int& x, const int& y)
     int area = x * y;
     HUMAN_LIMIT = area * HUMAN_PCT;
     TREE_LIMIT = area * TREE_PCT;
+    GOBLIN_LIMIT = area * GOBLIN_PCT;
     populate(x, y);
     max_x = x;
     max_y = y;
@@ -62,6 +64,7 @@ void Manager::populate_static(const int& x, const int& y)
 void Manager::populate_creature(const int &x, const int &y)
 {
     populate_with_model<Human>(HUMAN_LIMIT, x, y);
+    populate_with_model<Goblin>(GOBLIN_LIMIT, x, y);
 }
 
 
@@ -127,12 +130,6 @@ std::vector<CRDS> Manager::nearby(GameObject* g_ptr, const int& dist)
             
         }
     }
-//    std::cout << dist << std::endl;
-//    std::cout << x_max << " " << y_max << std::endl;
-//    std::cout << x_min << " " << y_min << std::endl;    
-//    for(auto i : nearby)
-//        std::cout << i.get_x() << ',' << i.get_y() << std::endl;
-//    
     return nearby;
 }
 
@@ -148,6 +145,8 @@ void Manager::add_player(void)
     avatar->get_symbol_ptr()->set_symbol('U');
     avatar->get_symbol_ptr()->set_effect(Symbol::UNDERLINED);
     avatar->get_symbol_ptr()->set_color(Symbol::YELLOW);
+    avatar->set_health(50);
+    avatar->set_strength(25);
     add(avatar);
 }
 

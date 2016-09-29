@@ -8,6 +8,7 @@
 
 #include "coordinates.hpp"
 #include <math.h>
+#include <cstdlib>
 
 
 CRDS::CRDS(const int& x_n, const int& y_n) {
@@ -32,12 +33,14 @@ CRDS CRDS::largest_component(void) const
     int largest_x = 0;
     int largest_y = 0;
 
-    if (std::abs(x) > std::abs(y))
-        largest_x = x;
+    if (x == 0 && y == 0)
+        ;
+    else if (std::abs(x) > std::abs(y))
+        largest_x = x / std::abs(x);
     else if (std::abs(x) == std::abs(y))
-        largest_x = x;
+        largest_x = x / std::abs(x);
     else
-        largest_y = y;
+        largest_y = y / std::abs(y);
     
     CRDS ret(largest_x, largest_y);
     

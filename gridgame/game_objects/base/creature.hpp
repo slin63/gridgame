@@ -12,8 +12,8 @@
 #include <iostream>
 
 class Creature : public GameObject {
-public:
-    void step();
+//public:
+//    void step();
     
 //protected:
 //    void rand_walk(const int& d = 1);

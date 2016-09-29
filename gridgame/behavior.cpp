@@ -9,6 +9,7 @@
 #include "behavior.hpp"
 #include "gameobject.hpp"
 
+#include <iostream>
 
 void BehaviorBox::rand_walk(const int& d, GameObject* g_ptr)
 {
@@ -30,13 +31,22 @@ void BehaviorBox::rand_walk(const int& d, GameObject* g_ptr)
     }
 }
 
-void BehaviorBox::chase(GameObject* chaser, GameObject* chasee)
+
+void BehaviorBox::chase(GameObject* chaser, GameObject* chasee, bool attack)
 {
     CRDS chase_v(chasee->get_c_x() - chaser->get_c_x(), chasee->get_c_y() - chaser->get_c_y());
     
     CRDS chase_v_simple = chase_v.largest_component();
     
+    if (attack && (chaser->get_distance_to(chasee) <= 1.43))
+    {
+        chaser->attack(chasee, chaser->get_strength());
+//        report_attack(chaser, chasee, damage);
+    }
+    
     // Not sure if this will work
     chaser->down(chase_v_simple.get_y());
     chaser->right(chase_v_simple.get_x());
 }
+
+

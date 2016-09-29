@@ -20,7 +20,7 @@ public:
     inline gVec get_objects();
     inline void add(GameObject*);
 
-    void step(); 
+//    void step(); 
     
     void populate(const int&, const int&);
     
@@ -45,6 +45,8 @@ private:
     
     int HUMAN_LIMIT;
     int TREE_LIMIT;
+    int GOBLIN_LIMIT;
+    
     Player* player;
     
     GameObject* get_rand_obj(const gVec&);

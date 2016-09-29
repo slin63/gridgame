@@ -16,7 +16,7 @@ class GameObject;
 class BehaviorBox {
 public:
     static void rand_walk(const int& d = 1, GameObject* g_ptr = nullptr);
-    static void chase(GameObject*, GameObject*);
+    static void chase(GameObject*, GameObject*, bool);
     
 };
 

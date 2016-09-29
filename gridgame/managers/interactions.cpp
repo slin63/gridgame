@@ -33,16 +33,50 @@ Manager::gVec InteractMgr::compress_vector(const std::vector<Manager::gVec>& fat
     return ret_v;
 }
 
+// http://stackoverflow.com/questions/3450860/check-if-a-stdvector-contains-a-certain-object
+void InteractMgr::step(const int& step_count)
+{
+    for (auto&& obj : mgr->get_objects())
+    {
+        obj->step();
+        if ( obj->is_ready(step_count) )
+            apply_nearby_behavior(obj);
+    }
+}
+
+
+void InteractMgr::apply_nearby_behavior(GameObject* obj)
+{
+    int interact_range = plyr->get_avatar()->get_vision() * 1.5;
+    GameObject* plyr_char = plyr->get_avatar();
+    bool in_range = ( obj->get_distance_to(plyr_char) <= interact_range );
+    
+    if (in_range && !obj->is_player() && obj->is_alive())
+    {
+        // obj.apply_nearby_behavior() - > to be implemented
+        if (obj->is_hostile())
+            BehaviorBox::chase(obj, plyr->get_avatar(), true);
+        else if (obj->is_wanderer() && !obj->is_hostile())
+        {
+            BehaviorBox::rand_walk(1, obj);
+        }
+    }
+}
+
 
 void InteractMgr::refresh_nearby_objs()
 {
-    Manager::gVec near = compress_vector(nearby_objs());
+    int plyr_vision = plyr->get_avatar()->get_vision();
+    GameObject* plyr_char = plyr->get_avatar();
+    
+    nearby_obj_list = compress_vector(nearby_objs(plyr_vision));
     std::map<int, GameObject*> menu;
     size_t id = 0;
     
-    for (auto&& i : near)
+    // Populating the id to object map for interaction menus later
+    for (auto&& i : nearby_obj_list)
     {
-        if (i->is_interactive() && !i->is_player())
+        if (i->is_interactive() && !i->is_player() && i->get_distance_to(plyr_char) < 1.42)
         {
             menu[id] = i;
             ++id;
@@ -51,7 +85,6 @@ void InteractMgr::refresh_nearby_objs()
     
     id2obj_map = menu;
 }
-
 
 
 void InteractMgr::list_nearby()
@@ -81,6 +114,26 @@ std::vector<Manager::gVec> InteractMgr::nearby_objs(const int& range)
 
 Manager::gVec& InteractMgr::objs_at_crds(const int& x, const int& y)
 {
-//    std::cout << "Object at " << x << ", " << y << std::endl;
     return mgr->get_r_grid().at(y).at(x);
 }
+
+
+bool InteractMgr::is_nearby(GameObject* g_ptr)
+{
+    for (auto&& obj : id2obj_map)
+    {
+        if (obj.second == g_ptr) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+
+
+
+
+
+

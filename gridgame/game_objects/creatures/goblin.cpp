@@ -15,10 +15,13 @@ Goblin::Goblin()
     health = race_health;
     draw_priority = creature_draw_priority;
     hides_in_shadows = true;
+    hostile = true;
+    wanders = true;
     dead_color = race_dead_color;
     dead_symbol = race_symbol;
     death_msg = race_death_msg;
     name = race_name;
+    
 }
 
 Goblin::Goblin(const CRDS& coords)
@@ -29,6 +32,8 @@ Goblin::Goblin(const CRDS& coords)
     health = race_health;
     draw_priority = creature_draw_priority;
     hides_in_shadows = true;
+    hostile = true;
+    wanders = true;
     dead_color = race_dead_color;
     dead_symbol = race_symbol;
     death_msg = race_death_msg;

@@ -15,6 +15,7 @@ Human::Human()
     health = race_health;
     draw_priority = creature_draw_priority;
     hides_in_shadows = true;
+    wanders = true;
     dead_color = Symbol::Effect::RED_BG;
     dead_symbol = race_symbol;
     death_msg = "has been torn apart!";
@@ -31,6 +32,7 @@ Human::Human(const CRDS& coords)
     dead_symbol = race_symbol;
     draw_priority = creature_draw_priority;
     hides_in_shadows = true;
+    wanders = true;
     death_msg = "has been torn apart!";
     name = "Human";
 }

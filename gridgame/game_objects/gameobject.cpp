@@ -27,16 +27,43 @@ void GameObject::check_alive(void)
     }
 }
 
+
 void GameObject::attack(GameObject* other_ptr, const int& dmg)
 {
-    other_ptr->delta_health(dmg);
+    int odds = rand() % 100;
+    int damage_roll = -(rand() % dmg);
+    std::string attacker_name = name;
+    std::string victim_name = other_ptr->get_name();
+    
+    if ( (accuracy * 100) > odds)
+    {
+        other_ptr->delta_health(damage_roll);
+        
+        std::cout << attacker_name << " dealt " << -damage_roll << " damage to " << victim_name << "!" << std::endl;
+        if (!other_ptr->is_alive() || other_ptr->get_health() <= 0)
+        {
+            std::cout << victim_name << " " << other_ptr->get_death_msg() << std::endl;
+        }
+        else
+        {
+            std::cout << victim_name << " has " << other_ptr->get_health() << " HP remaining. " << std::endl;
+        }
+    }
+    
+    else
+    {
+        std::cout << name << " missed the attack on " << other_ptr->get_name() << "!" << std::endl;
+    }
+    
 }
+
 
 char GameObject::choose_random(const std::vector<char>& c_v)
 {
     size_t ch = rand() % c_v.size();
     return c_v[ch];
 }
+
 
 GameObject::GameObject(const CRDS& coords) {
     c = coords;
@@ -57,17 +84,20 @@ void GameObject::up(const int& d)
         c.delta(0, -d);
 }
 
+
 void GameObject::down(const int& d)
 {
     if (get_c_y() + 1 <= GLOBAL_Y - 1)
         c.delta(0, d);
 }
 
+
 void GameObject::right(const int& d)
 {
     if (get_c_x() + 1 <= GLOBAL_X - 1)
         c.delta(d, 0);
 }
+
 
 void GameObject::left(const int& d)
 {

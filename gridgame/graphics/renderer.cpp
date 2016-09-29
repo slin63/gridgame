@@ -41,20 +41,25 @@ std::string RenderBox::draw_map()
 std::string RenderBox::draw_view_of(GameObject* g_ptr)
 {
     r_grid = mgr->get_r_grid();
+
     
     std::stringstream map;
     std::vector<CRDS> nearby_objs = Manager::nearby(g_ptr, g_ptr->get_vision());
     // First y coordinate, will use to see if we've moved onto a newline
     int current_y = 0;
+    int current_x = 0;
+    
     for(auto&& obj : nearby_objs)
     {
         const GameObject* other_obj = g_obj_at_crds(obj.get_x(), obj.get_y());
+        
         // Adds newlines as we advance down to the next y level
         if (obj.get_y() != current_y)
         {
             current_y = obj.get_y();
             map << "\n";
         }
+        
         // Apply darkness effects
         if (obj.distance(g_ptr->get_c()) > g_ptr->get_light())
         {
@@ -69,15 +74,20 @@ std::string RenderBox::draw_view_of(GameObject* g_ptr)
     }
     map << std::endl;
     
-    return map.str();
+    return add_borders(map.str(), 0, 0);
 }
 
 
-//std::string RenderBox::add_borders(const std::string& box)
-//{
-//    size_t row_l = box.find("\n");
-//    return "#TODO";
-//}
+std::string RenderBox::add_borders(const std::string& box, const int& x_m, const int& y_m)
+{
+    char top_border = '=';
+    char side_border = '|';
+    char bottom_border = '*';
+    
+    size_t row_l = box.find("\n");
+//    std::cout << row_l << std::endl;
+    return box;
+}
 
 
 const GameObject* RenderBox::g_obj_at_crds(const int& x, const int& y)

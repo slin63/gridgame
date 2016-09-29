@@ -9,23 +9,23 @@
 #include "creature.hpp"
 
 
-void Creature::step()
-{
-    if(player)
-    {
-        /* Nothing so far! */ ;
-    }
-    
-    else
-    {
-        check_alive();
-        
-        if (alive)
-        {
-            BehaviorBox::rand_walk(1, this);
-        }
-    }
-}
+//void Creature::step()
+//{
+//    if(player)
+//    {
+//        /* Nothing so far! */ ;
+//    }
+//    
+//    else
+//    {
+//        check_alive();
+//        
+//        if (alive)
+//        {
+//            BehaviorBox::rand_walk(1, this);
+//        }
+//    }
+//}
 
 
 //void Creature::rand_walk(const int& d)
