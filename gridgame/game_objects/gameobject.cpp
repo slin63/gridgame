@@ -24,6 +24,13 @@ void GameObject::check_alive(void)
         alive = false;
         symbol->set_background(dead_color);
         symbol->set_symbol(dead_symbol);
+        if (player)
+        {
+            int i;
+            std::cout << "gg" << std::endl;
+            std::cin >> i;
+            exit(0);
+        }
     }
 }
 

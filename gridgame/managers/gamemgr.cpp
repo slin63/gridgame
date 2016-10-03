@@ -68,6 +68,7 @@ void GameMgr::attack_menu()
     GameObject* target = react_box->get_nearby_objs()[target_id];
     
     plyr->attack(target, plyr->get_strength());
+
 }
 
 
