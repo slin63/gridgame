@@ -1,4 +1,6 @@
-##Gridgame
+##Gridgame 
+
+![The horror!](./screenshot.png?raw=true "Screenshot")
 
 A top-down, object-oriented, graphical "dungeon crawler". 
 Features:
