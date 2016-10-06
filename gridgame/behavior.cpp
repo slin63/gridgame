@@ -41,7 +41,6 @@ void BehaviorBox::chase(GameObject* chaser, GameObject* chasee, bool attack)
     if (attack && (chaser->get_distance_to(chasee) <= 1.43))
     {
         chaser->attack(chasee, chaser->get_strength());
-//        report_attack(chaser, chasee, damage);
     }
     
     // Not sure if this will work

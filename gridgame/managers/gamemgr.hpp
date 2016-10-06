@@ -36,7 +36,7 @@ private:
     void attack_menu(void);
     
     
-    // Make sure user didn't fuck up
+    // Make sure user didn't mess up
     bool check_input(char&);
     void input_error(const char&);
     void refresh_manager(void) { mgr_ptr->assemble_rVec(); }
