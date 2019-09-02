@@ -1,4 +1,4 @@
-##Gridgame 
+## Gridgame 
 
 ![The horror!](./screenshot.png?raw=true "Screenshot")
 
